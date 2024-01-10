@@ -1,0 +1,62 @@
+<!-- <ion-content>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" class="form-group">
+      <ion-list id="inbox-list">
+        <div class="border">
+          <img
+            src="../assets/icon/main-logo.png"
+            alt="saleslogo.svg"
+            class="logo"
+          />
+        </div>
+        <ion-list-header>Inbox</ion-list-header>
+        <ion-note>hi@ionicframework.com</ion-note>
+
+        <ion-menu-toggle
+          auto-hide="false"
+          *ngFor="let p of appPages; let i = index"
+        >
+          <ion-item
+            routerDirection="root"
+            [routerLink]="'./register'"
+            lines="none"
+            detail="false"
+            routerLinkActive="selected"
+          >
+            <ion-icon
+              aria-hidden="true"
+              slot="start"
+              [ios]="p.icon + '-outline'"
+              [md]="p.icon + '-sharp'"
+            ></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-menu>
+  </ion-split-pane>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-page" id="main-content" main>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-footer> -->
+
+<ion-router-outlet></ion-router-outlet>
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-page" id="main-content" main>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </div>
+    <!-- <div class="logout" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </div> -->
+  </ion-toolbar>
+</ion-footer>

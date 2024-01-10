@@ -1,0 +1,8 @@
+{
+  "Login": {
+    "email": "Email/Pin",
+    "Location": "Location",
+    "Register": "Register",
+    "Password": "Password"
+  }
+}

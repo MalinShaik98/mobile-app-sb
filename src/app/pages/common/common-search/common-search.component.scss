@@ -1,0 +1,85 @@
+ion-searchbar {
+  width: 295px;
+  border: 1px solid #e0e1e9;
+  height: 60px;
+  border-radius: 15px;
+  margin: 10px auto;
+}
+ion-content {
+  margin: 10px 0px 0px 0px;
+  --border-radius: 10px;
+  --background: var(--ion-color-primary-contrast);
+  border-radius: 15px;
+  top: 20px;
+  ion-list {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    border-radius: 15px;
+    ion-item {
+      --background: rgba(231, 232, 242, 0.2);
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+ion-label {
+  color: var(--ion-color-primary);
+}
+
+.content_center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+ion-spinner {
+  width: 1.75rem;
+  height: 1.75rem;
+  stroke: #444;
+  fill: #222;
+}
+
+ion-toolbar {
+  height: 0px;
+}
+ion-item {
+  strong {
+    font-weight: 300;
+  }
+}
+::ng-deep {
+  .heighlight {
+    --color: var(--ion-color-primary-tint);
+    font-weight: 900;
+  }
+}
+ion-searchbar {
+  ::ng-deep {
+    .searchbar-input-container {
+      .searchbar-input {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+      }
+      .searchbar-search-icon {
+        pointer-events: none;
+        width: 1.875rem;
+        height: 1.875rem;
+        left: 0.375rem;
+        top: 0.375rem;
+        color: var(--ion-color-input-border);
+      }
+    }
+  }
+}
+ion-list {
+  // display: flex;
+  margin: auto;
+}
+.active {
+  background-color: red; /* Replace with your desired active style */
+}
+.common-search {
+  margin: auto;
+  font-size: 20px;
+}

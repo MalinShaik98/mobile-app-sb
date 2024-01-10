@@ -1,0 +1,84 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar> </ion-toolbar>
+</ion-header> -->
+
+<ion-row class="header">
+  <ion-buttons class="dropdown-backbuttons" (click)="closeModal()">
+    <ion-back-button
+      mode="md"
+      icon="chevron-back-outline"
+      class="dropdown-backbutton"
+    ></ion-back-button>
+    <ion-icon name="chevron-back-outline" class="common-search"></ion-icon>
+  </ion-buttons>
+  <ion-searchbar mode="md" (ionInput)="getItems($event)"></ion-searchbar>
+</ion-row>
+
+<ion-list *ngIf="page!=='country'&&page!=='state'">
+  <ion-chip [class.active]="activeItem === 1">
+    <!-- <ion-img src="../assets/icon/profile.svg"></ion-img> -->
+    <ion-label color="primary" (click)="updateActiveItem(1)">Item </ion-label>
+  </ion-chip>
+  <ion-chip [class.active]="activeItem === 2">
+    <!-- <ion-img src="../assets/icon/call_history.svg"></ion-img> -->
+    <ion-label color="primary" (click)="updateActiveItem(2)"
+      >Customer
+    </ion-label>
+  </ion-chip>
+  <ion-chip [class.active]="activeItem === 3">
+    <!-- <ion-img src="../assets/icon/shipment_history.svg"></ion-img> -->
+    <ion-label color="primary" (click)="updateActiveItem(3)">Order </ion-label>
+  </ion-chip>
+</ion-list>
+
+<ion-content>
+  <!-- <ion-list>
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <strong [innerHTML]="item[key] | highlight: searchData"></strong
+      ><ion-label>{{ text }}{{ item[portCode] }}{{ text }}{{ item[countryCode] }}{{ format }}{{item[code]}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="content_center" *ngIf="filteredList.length == 0 && loading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div class="content_center" *ngIf="filteredList.length == 0 && !loading">
+    <ion-label>No Data</ion-label>
+  </div> -->
+  <ion-list *ngIf="page==='country'|| page==='state'">
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <strong [innerHTML]="item.name | mypipe: searchData"></strong>
+      <!-- <ion-label>{{ item.name | mypipe: searchData}}</ion-label> -->
+    </ion-item>
+  </ion-list>
+  <!-- <div *ngFor="let item of countries1">
+    <p>{{ item.nam
+      e }}</p>
+  </div> -->
+  <ion-list *ngIf="activeItem===1">
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <strong [innerHTML]="item.itemName| mypipe: searchData"></strong>
+      <!-- <ion-label>{{ item.name | mypipe: searchData}}</ion-label> -->
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="activeItem===2">
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <strong [innerHTML]="item.customerName| mypipe: searchData"></strong>
+      <!-- <ion-label>{{ item.name | mypipe: searchData}}</ion-label> -->
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="activeItem===3">
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <strong [innerHTML]="item.orderid| mypipe: searchData"></strong>
+      <!-- <ion-label>{{ item.name | mypipe: searchData}}</ion-label> -->
+    </ion-item>
+  </ion-list>
+  <div class="content_center" *ngIf="filteredList.length == 0 && loading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div class="content_center" *ngIf="filteredList.length == 0 && !loading">
+    <ion-label>No Data</ion-label>
+  </div>
+</ion-content>

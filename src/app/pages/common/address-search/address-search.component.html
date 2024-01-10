@@ -1,0 +1,29 @@
+<ion-row class="header">
+  <ion-buttons class="dropdown-backbuttons" (click)="closeModal()">
+    <ion-back-button
+      mode="md"
+      icon="chevron-back-outline"
+      class="dropdown-backbutton"
+    ></ion-back-button>
+    <ion-icon name="chevron-back-outline" class="common-search"></ion-icon>
+  </ion-buttons>
+  <ion-searchbar mode="md" (ionInput)="getItems($event)"></ion-searchbar>
+</ion-row>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of filteredList" (click)="selectedItem(item)">
+      <!-- <div *ngFor="let item of item.properties"> -->
+      <!-- <strong [innerHTML]="item.name | mypipe: searchData"></strong> -->
+      <!-- <ion-label>{{ item.name | mypipe: searchData}}</ion-label> -->
+      <ion-label>{{item.formatted}}-{{item.postcode}}</ion-label>
+      <!-- </div> -->
+    </ion-item>
+  </ion-list>
+  <div class="content_center" *ngIf="filteredList.length == 0 && loading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div class="content_center" *ngIf="filteredList.length == 0 && !loading">
+    <ion-label>No Data</ion-label>
+  </div>
+</ion-content>

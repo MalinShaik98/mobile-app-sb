@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="3" (click)="back()" [routerLink]="['/folder/home']">
+        <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+      </ion-col>
+      <ion-col size="6">
+        <h3><b>Cart</b></h3>
+      </ion-col>
+      <ion-col size="3" (click)="addCustomer()">
+        <ion-icon
+          name="add"
+          class="add"
+          [routerLink]="['/create-customer']"
+        ></ion-icon>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img
+          src="../assets/icon/more.svg"
+          class="img"
+          (click)="clickPopover()"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item
+    *ngFor="let item of cartItems"
+    lines="none"
+    class="items"
+    (click)="editItem(item)"
+  >
+    <!-- <ion-row> -->
+    <ion-label slot="start"
+      >{{item.itemName}} X <span>{{item.qty}}</span></ion-label
+    >
+    <ion-label class="location">Location</ion-label>
+    <ion-label slot="end">120.00</ion-label>
+    <!-- </ion-row> -->
+  </ion-item>
+  <!-- <ion-button expand="full" (click)="showTooltip($event)">
+    Button with Tooltip
+  </ion-button> -->
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Inventory Details</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">details</div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-item
+    *ngFor="let item of giftItems"
+    lines="none"
+    class="items"
+    (click)="editGiftItem(item)"
+  >
+    <ion-label slot="start">Gift-card</ion-label>
+    <ion-label class="location">Location</ion-label>
+    <ion-label slot="end">{{item.giftAmount}} </ion-label>
+  </ion-item>
+  <div class="last-form">
+    <p>SubTotal :</p>
+    <p>Tax :</p>
+    <p>Amount :</p>
+    <ion-row>
+      <div
+        class="percentage"
+        [class.active]="activeItem === 1"
+        (click)="updateActiveItem(1)"
+      >
+        <p>%</p>
+      </div>
+      <div
+        class="dollar"
+        [class.active]="activeItem === 2"
+        (click)="updateActiveItem(2)"
+      >
+        <p>$</p>
+      </div>
+      <!-- <div class="discountvalue"></div> -->
+      <input class="discountvalue" />
+    </ion-row>
+  </div>
+  <div>
+    <!-- <app-checkout></app-checkout> -->
+    <app-address></app-address>
+  </div>
+  <div class="button">
+    <ion-button>Checkout</ion-button>
+  </div>
+</ion-content>

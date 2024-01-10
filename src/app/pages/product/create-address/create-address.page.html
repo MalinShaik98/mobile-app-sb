@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="3" (click)="back()" [routerLink]="['/folder/home']">
+        <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+      </ion-col>
+      <ion-col size="8">
+        <h3><b>Create Address</b></h3>
+      </ion-col>
+      <!-- <ion-col size="3">
+        <ion-icon name="add" class="add"></ion-icon>
+      </ion-col> -->
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="createAddressForm" (ngSubmit)="submit()">
+    <div
+      class="label-float"
+      [class.invalid]="submitted &&  createAddressForm.controls['country'].errors"
+    >
+      <div>
+        <ion-label class="input-label required">Country</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          formControlName="country"
+          placeholder="Please select country"
+          (click)="openSearch('country')"
+        >
+        </ion-input>
+      </div>
+      <div *ngIf="submitted && createAddressForm.controls['country'].errors">
+        <label class="label">country is required</label>
+      </div>
+    </div>
+    <div
+      class="label-float"
+      [class.invalid]="submitted &&  createAddressForm.controls['state'].errors"
+    >
+      <div>
+        <ion-label class="input-label required">State</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          formControlName="state"
+          placeholder="Please select state"
+          (click)="openSearch('state')"
+        >
+        </ion-input>
+      </div>
+      <div *ngIf="submitted && createAddressForm.controls['state'].errors">
+        <label class="label">State is required</label>
+      </div>
+    </div>
+    <div
+      class="label-float"
+      [class.invalid]="submitted &&  createAddressForm.controls['address1'].errors"
+    >
+      <div>
+        <ion-label class="input-label required">Address1</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          formControlName="address1"
+          placeholder="Please Enter Address1"
+          (click)="addressSerch()"
+        >
+        </ion-input>
+      </div>
+      <div *ngIf="submitted && createAddressForm.controls['address1'].errors">
+        <label class="label">Address1 is required</label>
+      </div>
+    </div>
+    <div class="label-float">
+      <div>
+        <ion-label class="input-label">Address2</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          placeholder="Please Enter Address1"
+          formControlName="address2"
+          (ionInput)="getItems($event)"
+        >
+        </ion-input>
+      </div>
+      <!-- <div>
+      <label class="label">Country is required</label>
+    </div> -->
+    </div>
+
+    <div
+      class="label-float"
+      [class.invalid]="submitted &&  createAddressForm.controls['city'].errors"
+    >
+      <div>
+        <ion-label class="input-label required">City</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          formControlName="city"
+          placeholder="Please Enter City"
+        >
+        </ion-input>
+      </div>
+      <div *ngIf="submitted && createAddressForm.controls['city'].errors">
+        <label class="label">City is required</label>
+      </div>
+    </div>
+    <div
+      class="label-float"
+      [class.invalid]="submitted &&  createAddressForm.controls['zipcode'].errors"
+    >
+      <div>
+        <ion-label class="input-label required">Zip Code</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          formControlName="zipcode"
+          placeholder="Please enter zip code"
+        >
+        </ion-input>
+      </div>
+      <div *ngIf="submitted && createAddressForm.controls['zipcode'].errors">
+        <label class="label">Zip code is required</label>
+      </div>
+    </div>
+    <div class="label-float">
+      <div>
+        <ion-label class="input-label">Phone Number</ion-label>
+        <ion-input
+          mode="md"
+          type="text"
+          placeholder="Please enter phone number"
+        >
+        </ion-input>
+      </div>
+      <!-- <div>
+      <label class="label">Country is required</label>
+    </div> -->
+    </div>
+    <div class="toggle">
+      <ion-toggle (ionChange)="depositType($event)">Default Shipping</ion-toggle
+      ><br /><br />
+    </div>
+    <div class="toggle">
+      <ion-toggle (ionChange)="depositType($event)">Default Billing</ion-toggle
+      ><br /><br />
+    </div>
+    <ion-row>
+      <ion-button type="submit()">Create</ion-button>
+      <ion-button>Cancel</ion-button>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,0 +1,60 @@
+ion-toolbar,
+ion-header {
+  height: 51px;
+  ion-row {
+    ion-col {
+      margin-top: 2px;
+      h3 {
+        margin-top: 9px;
+      }
+    }
+  }
+}
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+.last-form {
+  margin-left: 17px;
+}
+.button {
+  display: block;
+}
+.add {
+  font-size: 30px;
+  margin-left: 45px;
+}
+.percentage {
+  border: 1px solid #e9ecef;
+  width: 24px;
+  height: 45px;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  p {
+    // margin: auto;
+    margin-top: 10px;
+  }
+}
+.dollar {
+  border: 1px solid #e9ecef;
+  width: 24px;
+  text-align: center;
+  height: 45px;
+  margin-top: 10px;
+  p {
+    // margin: auto;
+    margin-top: 10px;
+  }
+}
+.discountvalue {
+  border: 1px solid #e9ecef;
+  width: 44px;
+  height: 45px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.active {
+  background-color: red;
+}

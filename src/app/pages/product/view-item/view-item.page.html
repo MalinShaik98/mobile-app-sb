@@ -1,0 +1,173 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row class="header-grid">
+      <ion-col size="4" (click)="close()">
+        <p>Cancel</p>
+      </ion-col>
+      <ion-col size="6">
+        <p>Product Info</p>
+      </ion-col>
+      <ion-col size="2" class="last-element">
+        <p>Save</p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-form">
+    <!-- <ion-row>
+      <ion-col size="4">
+        <ion-img src="../assets/images/sky.jpg" alt="sky"></ion-img>
+      </ion-col>
+      <ion-col size="8">
+        <p>Teabag</p>
+        <p>SKU: American Ginseng Teabag</p>
+      </ion-col>
+    </ion-row> -->
+    <ion-img [src]="values.src" alt="sky"></ion-img>
+    <p>Name: {{values.itemName}}</p>
+    <p>SKU: Kuo Health Concentrated</p>
+    <ion-row class="qty-row">
+      <ion-col size="3"><p>Quantity:</p></ion-col>
+      <ion-col size="2">
+        <ion-button (click)="decrement()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-input type="number" [(ngModel)]="qty" type="number"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="increment()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <p>Amount: $57.00</p>
+    </ion-row>
+    <ion-row class="store-row">
+      <ion-col size="2">
+        <p>Store:</p>
+      </ion-col>
+      <ion-col size="10">
+        <div class="label-float">
+          <div>
+            <!-- <ion-label class="ion-text-capitalize">category</ion-label> -->
+            <!-- <ion-input
+              class="ion-text-capitalize"
+              placeholder="please select category"
+              mode="md"
+              (click)="openSearch()"
+            > -->
+            <ion-searchbar placeholder="Search" (click)="openSearch()">
+            </ion-searchbar>
+            <!-- <ion-select-option>store1</ion-select-option>
+              <ion-select-option>store2</ion-select-option>
+              <ion-select-option>store3</ion-select-option>
+              <ion-select-option>store4</ion-select-option>
+              <ion-select-option>store5</ion-select-option>
+              <ion-select-option>store6</ion-select-option> -->
+            <!-- </ion-input> -->
+          </div>
+          <div>
+            <div class="label-float">
+              <!-- <label>category is required</label> -->
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div class="label-float">
+      <ion-label class="input-label">Item Comments</ion-label>
+      <ion-textarea
+        class="label__text"
+        id="textarea"
+        type="text"
+        placeholder="Please Enter"
+      >
+      </ion-textarea>
+    </div>
+    <div class="item-button">
+      <ion-button>Add to Cart</ion-button>
+    </div>
+    <!-- <div>
+      <ion-row class="segment-row" id="frequency-segment">
+        <ion-segment
+          mode="md"
+          class="seg-btn"
+          value="description"
+          (ionChange)="typeChanged($event)"
+        >
+          <ion-segment-button value="description">
+            <ion-label class="label">Description </ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="stock">
+            <ion-label class="label"> Stock </ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </div> -->
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>Description</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <table *ngIf="type==='description'">
+            <thead>
+              <tr>
+                <th>Store</th>
+                <th>Available</th>
+                <th>OnHand</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+              </tr>
+              <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>Stock</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <table *ngIf="type==='description'">
+            <thead>
+              <tr>
+                <th>Store</th>
+                <th>Available</th>
+                <th>OnHand</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+              </tr>
+              <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ion-content>

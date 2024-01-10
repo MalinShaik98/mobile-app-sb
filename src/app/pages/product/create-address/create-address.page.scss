@@ -1,0 +1,17 @@
+ion-toolbar,
+ion-header {
+  height: 51px;
+  ion-row {
+    ion-col {
+      margin-top: 2px;
+      h3 {
+        margin-top: 9px;
+      }
+    }
+  }
+}
+
+.toggle {
+  margin-top: 10px;
+  margin-left: 25px;
+}

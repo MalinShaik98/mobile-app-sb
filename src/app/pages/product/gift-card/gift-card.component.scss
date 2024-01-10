@@ -1,0 +1,32 @@
+ion-toolbar,
+ion-header {
+  height: 51px;
+  ion-row {
+    ion-col {
+      margin-top: 2px;
+      ion-icon {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      h3 {
+        margin-top: 11px;
+      }
+    }
+  }
+}
+.main-form {
+  margin: 15px 0px 0px 17px;
+  p {
+    margin-top: 21px;
+    /* margin-bottom: 1rem; */
+    margin-left: 26px;
+  }
+}
+.toggle {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+.buttons {
+  margin-left: 25px;
+  margin-top: 19px;
+}

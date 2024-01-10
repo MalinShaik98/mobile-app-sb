@@ -1,0 +1,586 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-icon
+          name="arrow-back-outline"
+          class="back-icon"
+          (click)="closeModal()"
+        ></ion-icon>
+        <!-- <p class="back-icon" (click)="closeModal()">Save</p> -->
+      </ion-col>
+      <ion-col size="5" *ngIf="page=='editItem'">
+        <h3>
+          <b>Manage Items</b>
+        </h3>
+      </ion-col>
+      <ion-col size="9" *ngIf="page=='editQuote'">
+        <h3>
+          <b>Upadate-Quote Details</b>
+        </h3>
+      </ion-col>
+      <ion-col size="9" *ngIf="page=='editOrder'">
+        <h3>
+          <b>Edit-order Details</b>
+        </h3>
+      </ion-col>
+      <ion-col size="4" slot="end" *ngIf="page=='editItem'">
+        <p><b>count</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div>
+    <ion-row>
+      <ion-col size="2">
+        <p>R $100</p>
+      </ion-col>
+
+      <ion-col size="2">
+        <ion-button (click)="decrement()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-input type="number" [(ngModel)]="editItem.qty"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="increment()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <p>A $100</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="label-float">
+    <div>
+      <ion-label class="input-label">comments</ion-label>
+      <ion-input mode="md" type="text" placeholder="comments"> </ion-input>
+    </div>
+    <div>
+      <label></label>
+    </div>
+  </div> -->
+  <!-- <p>Location: <span>HYD</span></p> -->
+
+  <div class="main-form" *ngIf="page=='editItem'">
+    <p>SKU:</p>
+    <p>Rate:</p>
+    <p>Name:</p>
+    <ion-row class="qty-row">
+      <ion-col size="2"><p>qty:</p></ion-col>
+      <ion-col size="2">
+        <ion-button (click)="decrement(test)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-input type="number" [(ngModel)]="editItem.qty"></ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="increment(test)">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <p>Amount:</p>
+    <p>Location:</p>
+    <p>Discount:</p>
+    <p>Total Amount:</p>
+    <div class="label-float">
+      <div>
+        <ion-label class="input-label">comments</ion-label>
+        <ion-input mode="md" type="text" placeholder="comments"> </ion-input>
+      </div>
+      <div>
+        <label></label>
+      </div>
+    </div>
+    <!-- <ion-item slot="end">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-item> -->
+    <!-- <p slot="end">
+      <ion-icon name="trash-outline"></ion-icon>
+    </p> -->
+    <!-- <ion-toolbar>
+      <ion-buttons slot="end" (click)="removeItem()">
+        <ion-button>
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar> -->
+  </div>
+  <div *ngIf="page=='editQuote'">
+    <div class="main-form" *ngFor="let item of quoteData">
+      <p>
+        <b>Quote:</b><span>{{item.QuoteNo}}</span>
+      </p>
+      <p>
+        <b>Date:</b><span>{{item.Date}}</span>
+      </p>
+      <p>
+        <b>Status:</b><span>{{item.Status}}</span>
+      </p>
+      <p>
+        <b>Customer:</b><span>{{item.Customer}}</span>
+      </p>
+      <div class="label-float">
+        <div>
+          <ion-label class="input-label required">Phone Number</ion-label>
+          <ion-input
+            mode="md"
+            type="text"
+            placeholder="Please Enter Phone Number"
+            value="{{item.Phone}}"
+            disabled="true"
+          >
+          </ion-input>
+        </div>
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+      </div>
+      <div class="label-float">
+        <div>
+          <ion-label class="input-label required">Address</ion-label>
+          <ion-textarea
+            mode="md"
+            type="text"
+            placeholder=" Please add your address"
+            value="{{item.Address}}"
+            disabled="true"
+          >
+          </ion-textarea>
+        </div>
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+      </div>
+      <div class="edit" (click)="edit()">
+        <ion-icon name="create-outline"></ion-icon>
+      </div>
+      <!-- <p>Old Items</p> -->
+      <h4><b>Old Items</b></h4>
+      <div
+        class="ion-padding Order"
+        *ngFor="let data of item.items; let i = index"
+      >
+        <p>
+          <span> <img [src]="data.image" class="img" /></span>
+          <span (click)="removeItem(i,'olditems')" class="delete"
+            ><ion-icon name="trash-outline"></ion-icon
+          ></span>
+        </p>
+
+        <p>
+          <b>Name:</b><span>{{data.Name}}</span>
+        </p>
+        <p>
+          <b>Location:</b><span>{{data.Location}}</span>
+        </p>
+        <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Price</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder=" Please Enter Your Price"
+              [(ngModel)]="data.Price"
+            >
+            </ion-input>
+          </div>
+          <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        </div>
+        <!-- <p>
+          <b>Price:</b><span>{{data.Price}}</span>
+        </p> -->
+        <!-- <p> Quantity:<span>{{item.Quantity}}</span></p>
+      <p> Quantity:<span>{{item.Quantity}}</span></p> -->
+        <ion-row class="qty-row">
+          <ion-col size="2"
+            ><p><b>qty:</b></p></ion-col
+          >
+          <ion-col size="2">
+            <ion-button (click)="decrement(data)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-input type="number" [(ngModel)]="data.Quantity"></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="increment(data)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- <p>
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p> -->
+        <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Amount</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder="Please Enter Phone Number"
+              [(ngModel)]="data.Amount"
+            >
+            </ion-input>
+          </div>
+          <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        </div>
+      </div>
+      <h4>New Item</h4>
+      <div class="searchbar-wrapper">
+        <ion-searchbar placeholder="Search" (click)="openSearch()">
+        </ion-searchbar>
+      </div>
+
+      <div
+        class="ion-padding Order"
+        *ngFor="let data of newItemDetails ; let i = index"
+      >
+        <p>
+          <span> <img [src]="data.src" class="img" /></span>
+          <span (click)="removeItem(i,'newitems')" class="delete"
+            ><ion-icon name="trash-outline"></ion-icon
+          ></span>
+        </p>
+
+        <p>
+          <b>Name:</b
+          ><span>{{data.itemName
+          }}</span>
+        </p>
+        <p>
+          <b>Location:</b><span>{{data.Location}}</span>
+        </p>
+        <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Price</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder=" Please Enter Your Price"
+              [(ngModel)]="data.Price"
+            >
+            </ion-input>
+          </div>
+          <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        </div>
+        <!-- <p>
+          <b>Price:</b><span>{{data.Price}}</span>
+        </p> -->
+        <!-- <p> Quantity:<span>{{item.Quantity}}</span></p>
+      <p> Quantity:<span>{{item.Quantity}}</span></p> -->
+        <ion-row class="qty-row">
+          <ion-col size="2"
+            ><p><b>qty:</b></p></ion-col
+          >
+          <ion-col size="2">
+            <ion-button (click)="decrement(data)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-input type="number" [(ngModel)]="data.Quantity"></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="increment(data)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- <p>
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p> -->
+        <!-- <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Amount</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder="Please Enter Phone Number"
+              [(ngModel)]="data.Amount"
+            >
+            </ion-input>
+          </div> -->
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        <!-- </div> -->
+        <p>
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p>
+      </div>
+      <ion-button (click)="cancel()">Cancel</ion-button>
+      <ion-button (click)="save()">Save</ion-button>
+    </div>
+  </div>
+  <div *ngIf="page=='editOrder'">
+    <div class="main-form" *ngFor="let item of orderData; let i=index">
+      <p>
+        <b>OrderNo:</b><span>{{item.OrderNo}}</span>
+      </p>
+      <p>
+        <b>Date:</b><span>{{item.Date}}</span>
+      </p>
+      <p>
+        <b>Store:</b
+        ><span>{{item.Store
+        }}</span>
+      </p>
+      <p>
+        <b>Cashier:</b
+        ><span>{{item.Cashier
+        }}</span>
+      </p>
+      <p>
+        <b>Status:</b
+        ><span>{{item.Status
+        }}</span>
+      </p>
+      <p>
+        <b>Layaway Pay:</b>
+        <span>{{item.LayawayPay
+        }}</span>
+      </p>
+      <div class="label-float">
+        <div>
+          <ion-label class="input-label">Ship/Pickup Date</ion-label>
+          <ion-input
+            mode="md"
+            (click)="openCalendar('toDate')"
+            formControlName="toDate"
+            display-format="YYYY-MM-DD"
+            placeholder="Please add your date"
+          >
+          </ion-input>
+        </div>
+        <ion-datetime
+          (ionCancel)="showCalendar = false"
+          (ionChange)="onDateChange($event,'todate')"
+          [pickerOptions]="{ showBackdrop: true }"
+          [hidden]="!showCalendar"
+          display-format="YYYY-MM-DD"
+        ></ion-datetime>
+        <div>
+          <label class="label"></label>
+        </div>
+      </div>
+      <div class="label-float">
+        <div>
+          <ion-label class="input-label required">Phone Number</ion-label>
+          <ion-input
+            mode="md"
+            type="text"
+            placeholder="Please Enter Phone Number"
+            value="{{item.Phone}}"
+            disabled="true"
+          >
+          </ion-input>
+        </div>
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+      </div>
+      <div class="label-float">
+        <div>
+          <ion-label class="input-label required">Address</ion-label>
+          <ion-textarea
+            mode="md"
+            type="text"
+            placeholder=" Please add your address"
+            value="{{item.Address}}"
+            disabled="true"
+          >
+          </ion-textarea>
+        </div>
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+      </div>
+      <div class="edit" (click)="edit()">
+        <ion-icon name="create-outline"></ion-icon>
+      </div>
+      <div class="label-float" class="comments">
+        <div>
+          <ion-label class="input-label required">Comments</ion-label>
+          <ion-input
+            mode="md"
+            type="text"
+            placeholder="Please Enter Phone Number"
+            value="{{item.Comments}}"
+            c
+          >
+          </ion-input>
+        </div>
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+      </div>
+      <p><b>Old Items</b></p>
+      <div
+        class="ion-padding Order"
+        *ngFor="let data of item.items; let i = index"
+      >
+        <p>
+          <span></span>
+          <span (click)="removeItem(i,'olditems')" class="delete"
+            ><ion-icon name="trash-outline"></ion-icon
+          ></span>
+        </p>
+        <p>
+          <b>Name:</b><span>{{data.Name}}</span>
+        </p>
+        <!-- <p>
+        <b>Price:</b><span>{{item.Price}}</span>
+      </p> -->
+        <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Price</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder=" Please Enter Your Price"
+              [(ngModel)]="data.Price"
+              value="data.price"
+            >
+            </ion-input>
+          </div>
+          <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        </div>
+
+        <!-- <p> Quantity:<span>{{item.Quantity}}</span></p>
+      <p> Quantity:<span>{{item.Quantity}}</span></p> -->
+        <ion-row class="qty-row">
+          <ion-col size="2"
+            ><p><b>qty:</b></p></ion-col
+          >
+          <ion-col size="2">
+            <ion-button (click)="decrement(data)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-input type="number" [(ngModel)]="data.Quantity"></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="increment(data)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <p>
+          <b>Location:</b><span>{{data.Location}}</span>
+        </p>
+        <p>
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p>
+      </div>
+      <h4>New Item</h4>
+      <div class="searchbar-wrapper">
+        <ion-searchbar placeholder="Search" (click)="openSearch()">
+        </ion-searchbar>
+      </div>
+
+      <div
+        class="ion-padding Order"
+        *ngFor="let data of newItemDetails ; let i = index"
+      >
+        <p>
+          <span> <img [src]="data.src" class="img" /></span>
+          <span (click)="removeItem(i,'newitems')" class="delete"
+            ><ion-icon name="trash-outline"></ion-icon
+          ></span>
+        </p>
+
+        <p>
+          <b>Name:</b
+          ><span>{{data.itemName
+          }}</span>
+        </p>
+        <p>
+          <b>Location:</b><span>{{data.Location}}</span>
+        </p>
+        <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Price</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder=" Please Enter Your Price"
+              [(ngModel)]="data.Price"
+            >
+            </ion-input>
+          </div>
+          <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        </div>
+        <!-- <p>
+          <b>Price:</b><span>{{data.Price}}</span>
+        </p> -->
+        <!-- <p> Quantity:<span>{{item.Quantity}}</span></p>
+      <p> Quantity:<span>{{item.Quantity}}</span></p> -->
+        <ion-row class="qty-row">
+          <ion-col size="2"
+            ><p><b>qty:</b></p></ion-col
+          >
+          <ion-col size="2">
+            <ion-button (click)="decrement(data)">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-input type="number" [(ngModel)]="data.Quantity"></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button (click)="increment(data)">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- <p>
+
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p> -->
+        <!-- <div class="label-float">
+          <div>
+            <ion-label class="input-label required">Amount</ion-label>
+            <ion-input
+              mode="md"
+              type="text"
+              placeholder="Please Enter Phone Number"
+              [(ngModel)]="data.Amount"
+            >
+            </ion-input>
+          </div> -->
+        <!-- <div *ngIf="submitted && customerForm.controls['firstName'].errors">
+        <label class="label">firstName is required</label>
+      </div> -->
+        <!-- </div> -->
+        <p>
+          <b>Amount:</b><span>{{data.Amount}}</span>
+        </p>
+      </div>
+      <ion-button (click)="cancel()">Cancel</ion-button>
+      <ion-button (click)="save()">Save</ion-button>
+    </div>
+  </div>
+</ion-content>

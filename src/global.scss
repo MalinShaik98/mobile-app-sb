@@ -24,3 +24,155 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+ion-input,
+ion-datetime,
+// ion-select {
+//   height: 3.563rem;
+// }
+ion-select,
+ion-input,
+ion-textarea,
+ion-datetime {
+  border: 1px solid #cbcbcb;
+  border-radius: 0.625rem;
+  width: 90% !important;
+
+  --padding-start: 1.25rem !important;
+  font-size: 0.875rem;
+  transition: all 0.1s linear;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  //   -webkit-appearance: none;
+  margin: 1.81rem auto 0 auto !important;
+  max-width: none;
+}
+
+.input-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--ion-color-nsprimary);
+  position: absolute;
+  margin: -0.625rem 0 0 2.375rem;
+  z-index: 10000;
+  background: var(--ion-color-primary-contrast);
+  padding: 0 0.313rem 0 0.313rem;
+}
+
+//dropdown back button
+.dropdown-backbuttons {
+  width: 3.75rem;
+  height: 3.75rem;
+  margin: 0.625rem 0 0 0.75rem;
+
+  border-radius: 0.938rem;
+  border: 1px solid var(--ion-color-nsprimary);
+}
+.dropdown-backbutton {
+  --icon-font-size: 1rem;
+  color: var(--ion-color-nsprimary);
+  margin: auto;
+}
+.my-custom-class .modal-wrapper {
+  background: #222;
+}
+//heading
+.heading {
+  // margin-left: 1.25rem;
+  color: #ac3a31;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+//card
+ion-card {
+  width: 90%;
+  margin: 1.25rem auto;
+  border: 1px solid #c5c6cd;
+  border-radius: 0.625rem;
+  box-shadow: none !important;
+  ion-card-content {
+    padding-right: 0;
+  }
+}
+
+//back button
+.back-icon {
+  font-size: 24px;
+  margin-top: 10px;
+  margin-left: 4px;
+}
+//segments
+.segment-row {
+  margin-top: 0.938rem;
+  .segment-label {
+    color: var(--ion-color-primary);
+    position: absolute;
+    margin-left: 1.563rem;
+    margin-top: 0.313rem;
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+  ion-segment {
+    height: 3.125rem;
+    width: 90%;
+    --background: var(--ion-color-primary-contrast);
+    border: 1px solid var(--ion-border-color-input);
+    border-radius: 0.625rem;
+    margin: 1.81rem 0 0 1.2rem;
+    ion-segment-button {
+      font-size: 0.75rem;
+      --background-checked: var(--ion-color-nsprimary);
+      --color-checked: var(--ion-color-success-contrast);
+      --indicator-color: none;
+      border-right: 1px solid var(--ion-border-color-input);
+      --padding-start: 0.688rem;
+      --padding-start: 0.313rem;
+      --padding-end: 0.313rem;
+      .label {
+        text-transform: none;
+        font-weight: 600;
+        font-size: 0.75rem;
+        align-items: center;
+        text-align: center;
+        .seg-icon {
+          display: inline-block;
+          margin: 0.25rem 0 0 0;
+          width: 1.25rem;
+          height: 1rem;
+        }
+      }
+    }
+  }
+}
+
+//error
+.label {
+  // color: white;
+  float: left;
+  margin-left: 15px;
+}
+//search
+ion-searchbar[no-shadow] {
+  & input {
+    box-shadow: none !important;
+    padding-inline-start: 50px !important;
+    padding-inline-end: 0px !important;
+  }
+}
+.searchbar-input {
+  box-shadow: none !important;
+}
+//required field
+.required:after {
+  content: " *";
+  color: var(--ion-color-border-danger);
+}
+.my-custom-popover-css {
+  .popover-wrapper {
+    .popover-content {
+      top: 0 !important;
+      left: inherit !important;
+      right: 0;
+    }
+  }
+}

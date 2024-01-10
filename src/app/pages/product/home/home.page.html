@@ -1,0 +1,245 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="1" (click)="back()">
+        <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+      </ion-col>
+      <ion-col size="4">
+        <h3><b>Products</b></h3>
+      </ion-col>
+      <ion-col size="2" (click)="goToCart()" class="items">
+        <p><ion-icon name="cart" class="cart"></ion-icon>:{{itemCount}}</p>
+      </ion-col>
+      <ion-col size="2" (click)="addCustomer()">
+      
+        <ion-icon name="notifications" class="cart"></ion-icon>
+        <ion-icon name="person-outline" class="cart"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <ion-img
+          src="../assets/icon/more.svg"
+          class="img"
+          (click)="clickPopover($event)"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="1" (click)="back()">
+        <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+      </ion-col>
+      <ion-col size="5">
+        <h3><b>Products</b></h3>
+      </ion-col>
+      <ion-col size="1" (click)="goToCart()">
+        <ion-img src="../assets/icon/cart.svg" class="img"></ion-img>
+      </ion-col>
+      <ion-col size="2">
+        <span class="itemscount">:{{itemCount}}</span>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img src="../assets/icon/notification.svg" class="img"></ion-img>
+      </ion-col>
+      <ion-col size="1" (click)="addCustomer()">
+        <ion-img src="../assets/icon/customer.svg" class="img"></ion-img>
+      </ion-col>
+      <ion-col size="1" (click)="clickPopover($event)">
+        <ion-img src="../assets/icon/more.svg" class="img"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <!-- <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Select</ion-label>
+        <ion-select>
+          <ion-select-option value="brown">customer</ion-select-option>
+          <ion-select-option value="blonde">Item</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-searchbar mode="md" (click)="openSearch()"></ion-searchbar>
+    </ion-col>
+  </ion-row> -->
+  <!-- <ion-searchbar mode="md" (click)="openSearch()"></ion-searchbar> -->
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        <ion-icon name="ban-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-searchbar placeholder="Search"></ion-searchbar>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon name="ban-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <div class="searchbar-wrapper">
+    <ion-searchbar placeholder="Search" (click)="openSearch()"> </ion-searchbar>
+    <ion-buttons class="gift">
+      <ion-icon name="gift-outline" (click)="gift()"></ion-icon>
+    </ion-buttons>
+  </div>
+  <form [formGroup]="itemform">
+    <!-- <ion-row class="main-form">
+      <ion-col *ngFor="let item of items" class="item">
+        <div class="item" (click)="addItem(item)">
+          <figure>
+            <img src="{{item.src}}" class="main-img" />
+            <figcaption class="figure-caption">{{item.itemName}}</figcaption>
+          </figure>
+        </div>
+      </ion-col>
+    </ion-row> -->
+    <div class="main-form">
+      <ion-row>
+        <div class="main-item" *ngFor="let item of items">
+          <ion-row class="sub-item" (click)="openItem(item)">
+            <p>View</p>
+          </ion-row>
+          <ion-row class="sub-item1" (click)="addItem(item)">
+            <figure>
+              <img src="{{item.src}}" class="main-img" />
+              <figcaption class="figure-caption">{{item.itemName}}</figcaption>
+            </figure>
+          </ion-row>
+          <ion-row class="amount">
+            <ion-col size="6">
+              <p>$40.00</p>
+            </ion-col>
+            <ion-col size="6">
+              <p>$40.00</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-row>
+
+      <!-- <ion-row class="last-form">
+        <ion-col>
+          <ion-icon name="woman"></ion-icon>
+        </ion-col>
+        <ion-col (click)="goToCart()">
+          <p>Items:{{itemCount}}</p>
+        </ion-col>
+      </ion-row> -->
+      <!-- <ion-row class="main-form">
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="main-form">
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="main-form">
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="item">
+        <figure>
+          <img src="../assets/images/sky.jpg" class="main-img" />
+          <figcaption class="figure-caption">Nature</figcaption>
+        </figure>
+      </div>
+    </ion-col>
+  </ion-row> -->
+      <!-- <ion-footer>
+    <div class="last-form">
+      <p></p>
+    </div>
+  </ion-footer> -->
+
+      <!-- <ion-item> -->
+      <!-- <ion-label>Gender</ion-label> -->
+      <!-- <ion-row>
+    <ion-col size="4">
+      <ion-select placeholder="Select One">
+        <ion-select-option value="f">Item</ion-select-option>
+        <ion-select-option value="m">Customer</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col size="7">
+      <ion-searchbar mode="md" (click)="openSearch()"></ion-searchbar>
+    </ion-col>
+  </ion-row> -->
+
+      <!-- </ion-item> -->
+      <!-- <div class="ion-page" class="last-form" (click)="goToCart()">
+      <p>Items:{{itemCount}}</p>
+    </div> -->
+    </div>
+  </form>
+</ion-content>
+
+<!-- <ion-footer>
+  <ion-toolbar>
+    <div class="ion-page" (click)="goToCart()">
+      <p>Items:{{itemCount}}</p>
+    </div>
+  </ion-toolbar>
+</ion-footer> -->

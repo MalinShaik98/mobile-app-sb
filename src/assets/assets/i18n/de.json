@@ -1,0 +1,8 @@
+{
+  "Login": {
+    "email": "abc",
+    "Location": "def",
+    "Register": "Register",
+    "Password": "Password"
+  }
+}
