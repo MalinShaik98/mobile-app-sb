@@ -1,0 +1,98 @@
+<ion-content [fullscreen]="true">
+  <div class="login-page">
+    <img
+      src="../assets/icon/company_logo.svg"
+      alt="saleslogo.svg"
+      class="logo"
+    />
+    <div class="login-page-main">
+      <div class="login-page-sub">
+        <h3>OTP Verification</h3>
+      </div>
+    </div>
+    <ion-row>
+      <ion-col size="2">
+        <ion-input
+          type="number"
+          [(ngModel)]="first"
+          class="inputs"
+          #otp1
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,otp2,'','')"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input
+          [(ngModel)]="second"
+          class="inputs"
+          #otp2
+          type="number"
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,otp3,otp1,'')"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input
+          [(ngModel)]="third"
+          class="inputs"
+          #otp3
+          type="number"
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,otp4,otp2,'')"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input
+          [(ngModel)]="forth"
+          class="inputs"
+          #otp4
+          type="number"
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,otp5,otp3,'')"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input
+          [(ngModel)]="fifth"
+          class="inputs"
+          #otp5
+          type="number"
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,otp6,otp4,'')"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input
+          [(ngModel)]="sixth"
+          class="inputs"
+          #otp6
+          type="number"
+          required="true"
+          maxLength="1"
+          (keyup)="otpController($event,'',otp5,'')"
+        >
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <div class="login-page-btn">
+      <ion-button (click)="proceedVerify()" class="btn-primary"
+        >Proceed</ion-button
+      >
+    </div>
+    <div class="form-group">
+      <a class="forget-txt"
+        >Don't reccive OTP? <a><b>Resend again</b></a></a
+      >
+    </div>
+  </div>
+</ion-content>
